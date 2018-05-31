@@ -20,6 +20,6 @@ public class MainTest {
     @org.junit.Test
     public void main() {
         assertTrue(true);
-        // TODO: [@gsm] 18.5.31 test output 
+        // TODO: [@gsm] 18.5.31 test output
     }
 }

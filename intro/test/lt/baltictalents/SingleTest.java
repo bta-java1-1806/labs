@@ -9,11 +9,13 @@ import static org.junit.Assert.*;
 public class SingleTest {
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() /*throws Exception*/ {
+        // TODO: [@gsm] 18.5.31 fill or delete 
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() /*throws Exception*/ {
+        // TODO: [@gsm] 18.5.31 fill or delete 
     }
 
     @Test
