@@ -20,6 +20,6 @@ public class SingleTest {
 
     @Test
     public void getInstance() {
-        fail();
+        fail("Tyčia nulūžo");
     }
 }
