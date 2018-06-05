@@ -1,4 +1,4 @@
-package lt.baltictalents.util;
+package lt.baltictalents.intro.util;
 
 public class SystemUtils {
     private static SystemUtils ourInstance = new SystemUtils();
