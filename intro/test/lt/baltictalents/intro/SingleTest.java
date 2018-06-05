@@ -1,4 +1,4 @@
-package lt.baltictalents;
+package lt.baltictalents.intro;
 
 import org.junit.After;
 import org.junit.Before;
