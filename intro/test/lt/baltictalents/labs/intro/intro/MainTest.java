@@ -1,8 +1,11 @@
-package lt.baltictalents.intro;
+package lt.baltictalents.labs.intro.intro;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 public class MainTest {
@@ -19,7 +22,9 @@ public class MainTest {
 
     @org.junit.Test
     public void main() {
-        assertTrue(true);
+        Assert.assertThat(true, is(true));
         // TODO: [@gsm] 18.5.31 test output
     }
+
+
 }
