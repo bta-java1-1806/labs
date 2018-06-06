@@ -30,11 +30,11 @@ public class Main {
 
     // if(xArray==null) throw new NullPointerException();     // Tas gausis savaime ciklo viduje, taip įdomiau 😀
 
-    int result = xArray[0]; // TODO: Užduotis: pataisyti klaidą
+    int result = 0; // TODO: Užduotis: pataisyti klaidą
 
     // nors sutaupytume simbolių, bet čia TIKRAI nenorime iteruoti per masyvą kaip per kolekciją „for(int e:xArray)“
     //noinspection ForLoopReplaceableByForEach
-    for (int i=1, n=xArray.length; i < n; i++) {
+    for (int i=0, n=xArray.length; i < n; i++) {
       result += xArray[i];
     }
 

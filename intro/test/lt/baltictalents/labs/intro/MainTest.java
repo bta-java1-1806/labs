@@ -111,7 +111,7 @@ public class MainTest {
             fail("Did not throw with null array");
 
         }catch (Throwable e) {
-            e.printStackTrace();
+            // e.printStackTrace();
             assertThat("Not a NullPointerException!!!", e.getClass(), sameInstance(NullPointerException.class));
         }
     }
