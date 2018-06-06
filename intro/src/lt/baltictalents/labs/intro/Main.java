@@ -1,6 +1,10 @@
 package lt.baltictalents.labs.intro;
 
 
+import lt.baltictalents.labs.util.TODO;
+
+import static lt.baltictalents.labs.util.NotImplementedException.TODO;
+
 public class Main {
   public static void main(String... args) {
     System.out.println("hi");
@@ -38,8 +42,11 @@ public class Main {
   }
 
 
+
+  @TODO("Realizuoti metodą average")
   public static int average(int ...xArray) {
-    throw new lt.baltictalents.labs.util.NotImplementedException();  // Užduotis: užpildyti šį metodą
+    //throw new lt.baltictalents.labs.util.NotImplementedException();  // Užduotis: užpildyti šį metodą
+    return (int)TODO("Nerealizuotas metodas Main.average.");
   }
 
 }

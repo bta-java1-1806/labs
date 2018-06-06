@@ -1,12 +1,44 @@
 package lt.baltictalents.labs.util;
 
 /**
- * Klasė, skirta pažymėti nerealizuotam kodui.
- *
+ * Klasė, skirta pažymėti nerealizuotam kodui ar įrašyti fiktyvų kodą vietoje jo.
+ * Jei reikia tik pažymėti nepabaigtą, bet funkcionalų fragmentą, naudoti anotaciją @TODO.
+ * <p>TODO: [@gsm,2018.06.06] sutvarkyti tekstus </p>
  * @deprecated Galutiniame kode ši klasė neturėtų būti naudojama
+ *
+ * @author gsm
+ * @since 1.0
+ * @see {@link TODO}
  */
+@SuppressWarnings("TodoComment")
 @Deprecated
 public class NotImplementedException extends UnsupportedOperationException {
+
+  /**
+   * @deprecated
+   * @param message
+   */
+  @Deprecated
+  public static Object TODO(String message){
+    throw new NotImplementedException(message);
+  }
+  /**
+   * @deprecated
+   */
+  public static Object TODO(){
+    throw new NotImplementedException(defaultMessage(2));
+  }
+
+
+
+  protected static String defaultMessage(int stackLevel) {
+    return String.format("Method %s.%s is not (yet) implemented but was called from %s.%s.",
+            StacktraceUtils.callerClassName(stackLevel),
+            StacktraceUtils.callerMethodName(stackLevel),
+            StacktraceUtils.callerClassName(stackLevel+1),
+            StacktraceUtils.callerMethodName(stackLevel+1)
+    );
+  }
 
   /**
    * Generates an exception with a reference to the caller method.
@@ -16,12 +48,7 @@ public class NotImplementedException extends UnsupportedOperationException {
    */
   @Deprecated
   public NotImplementedException() {
-    this(String.format("Method %s.%s is not (yet) implemented but was called from %s.%s.",
-            StacktraceUtils.callerClassName(1),
-            StacktraceUtils.callerMethodName(1),
-            StacktraceUtils.callerClassName(2),
-            StacktraceUtils.callerMethodName(2)
-    ));
+    this( defaultMessage(2) );
   }
 
   /**
