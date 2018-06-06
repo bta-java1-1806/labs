@@ -1,4 +1,4 @@
-package lt.baltictalents.labs;
+package lt.baltictalents.intro;
 
 public class Main {
 

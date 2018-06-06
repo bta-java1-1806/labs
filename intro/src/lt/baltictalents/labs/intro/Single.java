@@ -1,4 +1,4 @@
-package lt.baltictalents.labs;
+package lt.baltictalents.labs.intro;
 
 public class Single {
     private static final Single ourInstance = new Single();
