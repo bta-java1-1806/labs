@@ -29,7 +29,7 @@ public class Main {
     int result = xArray[0]; // TODO: Užduotis: pataisyti klaidą
 
     // nors sutaupytume simbolių, bet čia TIKRAI nenorime iteruoti per masyvą kaip per kolekciją „for(int e:xArray)“
-    //noinspection ALL
+    //noinspection ForLoopReplaceableByForEach
     for (int i=1, n=xArray.length; i < n; i++) {
       result += xArray[i];
     }

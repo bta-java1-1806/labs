@@ -6,8 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;  // assertThat sąlygos is(), isInstance(), ir t.t.
+import static org.junit.Assert.*;           // assertEquals, assertThat, ir t.t.
 
 @SuppressWarnings("MagicNumber") // Java pyksta dėl beprasmių skaičių: nuraminam, kad testavimo klasėj nekreiptų dėmesio
 public class MainTest {
@@ -24,85 +24,79 @@ public class MainTest {
 
     @Test // lyginis skaičius elm.
     public void sum_0_to_5() {
-        assertEquals( 15, Main.sum( 0,1,2,3,4,5 ) );
+        assertThat(Main.sum(0, 1, 2, 3, 4, 5), is(15));
     }
 
     @Test // neigiami pakaitom su teigiamais
     public void sum_plus_minus() {
-        assertEquals( 3, Main.sum( 1-2,3,-4,5 ) );
+        assertThat(Main.sum(1 - 2, 3, -4, 5), is(3));
     }
 
     @Test // nėra argumentų
     public void sum_no_args() {
-        assertEquals( 0, Main.sum() );
+        assertThat(Main.sum(), is(0));
     }
 
     @Test // tuščias masyvas
     public void sum_no_elms() {
         //  noinspection RedundantArrayCreation       // iš tikrųjų, tai tik patikrinam sintaksę
-        assertEquals( 0, Main.sum(new int[0]) );
+        assertThat(Main.sum(new int[0]), is(0));
     }
 
     @Test // Overflow
     public void sum_ovrflw() {
-        assertEquals(-2,
-                Main.sum(
-                    3,
-                    Integer.MAX_VALUE,
-                    Integer.MAX_VALUE,
-                    Integer.MAX_VALUE,
-                    -Integer.MAX_VALUE,
-                    -Integer.MAX_VALUE,
-                    -Integer.MAX_VALUE,
-                    -5
-                )
-        );
+        assertThat(Main.sum(
+                3,
+                Integer.MAX_VALUE,
+                Integer.MAX_VALUE,
+                Integer.MAX_VALUE,
+                -Integer.MAX_VALUE,
+                -Integer.MAX_VALUE,
+                -Integer.MAX_VALUE,
+                -5
+        ), is(-2));
 
     }
 
     @Test // Underflow
     public void sum_undrflw() {
         //noinspection NumericOverflow              // išjungia IDEA įspėjimą dėl Numeric Overflow -Integer.MIN_VALUE
-        assertEquals(-2,
-                Main.sum(
-                    -5,
-                    Integer.MIN_VALUE,
-                    Integer.MIN_VALUE,
-                    Integer.MIN_VALUE,
-                    -Integer.MIN_VALUE,
-                    -Integer.MIN_VALUE,
-                    -Integer.MIN_VALUE,
-                    3
-                )
-        );
+        assertThat(Main.sum(
+                -5,
+                Integer.MIN_VALUE,
+                Integer.MIN_VALUE,
+                Integer.MIN_VALUE,
+                -Integer.MIN_VALUE,
+                -Integer.MIN_VALUE,
+                -Integer.MIN_VALUE,
+                3
+        ), is(-2));
     }
 
 
     @Test // Twist over both edges Pacman-style
     public void sum_twist() {
-        assertEquals(-8,
-                Main.sum(
-                        Integer.MIN_VALUE,
-                        Integer.MIN_VALUE,
-                        Integer.MIN_VALUE,
-                        Integer.MIN_VALUE,
+        assertThat(Main.sum(
+                Integer.MIN_VALUE,
+                Integer.MIN_VALUE,
+                Integer.MIN_VALUE,
+                Integer.MIN_VALUE,
 
-                        Integer.MAX_VALUE,
-                        Integer.MAX_VALUE,
-                        Integer.MAX_VALUE,
-                        Integer.MAX_VALUE,
+                Integer.MAX_VALUE,
+                Integer.MAX_VALUE,
+                Integer.MAX_VALUE,
+                Integer.MAX_VALUE,
 
-                        Integer.MAX_VALUE,
-                        Integer.MAX_VALUE,
-                        Integer.MAX_VALUE,
-                        Integer.MAX_VALUE,
+                Integer.MAX_VALUE,
+                Integer.MAX_VALUE,
+                Integer.MAX_VALUE,
+                Integer.MAX_VALUE,
 
-                        Integer.MIN_VALUE,
-                        Integer.MIN_VALUE,
-                        Integer.MIN_VALUE,
-                        Integer.MIN_VALUE
-                )
-        );
+                Integer.MIN_VALUE,
+                Integer.MIN_VALUE,
+                Integer.MIN_VALUE,
+                Integer.MIN_VALUE
+        ), is(-8));
     }
 
     @Test // masyvas yra null ⇒ NullPointerException
@@ -118,7 +112,7 @@ public class MainTest {
 
         }catch (Throwable e) {
             e.printStackTrace();
-            assertSame( "Not a NullPointerException!!!", NullPointerException.class, e.getClass() );
+            assertThat("Not a NullPointerException!!!", e.getClass(), sameInstance(NullPointerException.class));
         }
     }
 
@@ -129,12 +123,12 @@ public class MainTest {
 
         //noinspection ResultOfMethodCallIgnored // OK – mums ir nerūpi rezultatas, tik žiūrim, ar nesusigadina masyvas
         Main.sum(orig);
-        assertArrayEquals(orig, copy);
+        assertThat(copy, is(orig));
     }
 
     @Test
     public void average() {
-        assertEquals( -1, Main.average(-2, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE ));
+        assertThat(Main.average(-2, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE), is(-1));
     }
 
 }
